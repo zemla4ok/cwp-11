@@ -12,8 +12,14 @@ app.get('/api/films/readall', (req, res) => {
 });
 
 app.get('/api/films/read', (req, res) => {
- 
+
 });
+
+function sortFilms(){
+  films.sort((x, y) => {
+      return x.position - y.position;
+  })
+}
 
 app.listen(3000, () => {
   console.log('Example app listening on port 3000!');
