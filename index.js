@@ -12,7 +12,7 @@ app.get('/api/films/readall', (req, res) => {
 });
 
 app.get('/api/films/read', (req, res) => {
-
+  res.send(films[films.findIndex(film => film.id == req.query.id)]);
 });
 
 function sortFilms(){
