@@ -4,11 +4,19 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 let films = require('./top250.json');
+let actors = require('./actors.json');
 
 const errCreate = {code: 400, message: 'error in creating '}
 const validErr = {code: 400, message: 'validating error '}
 const idErr = {code: 400, message: 'Where is id?'}
 const invId = {code: 400, message: 'invalid id'}
+
+app.get('/api/actors/readall', (req, res) => {
+  actors.sort((x, y) => {
+    return x.liked - y.liked;
+  });
+  res.send(actors);
+})
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
