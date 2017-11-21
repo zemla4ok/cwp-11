@@ -10,6 +10,48 @@ const errCreate = {code: 400, message: 'error in creating '}
 const validErr = {code: 400, message: 'validating error '}
 const idErr = {code: 400, message: 'Where is id?'}
 const invId = {code: 400, message: 'invalid id'}
+const invBirth = {code: 400, message: 'invalid birth'}
+
+app.post('/api/actors/create', (req, res) => {
+  let r = req.body;
+  let obj = {};
+  obj.id = Date.now();
+  if(!r.name || ! r.birth || !r.films || !r.liked || !r.photo){
+    res.json(errCreate);
+    return;
+  }
+  let flag = true;
+  obj.name = r.name;
+  obj.budget = parseInt(r.budget) <= 0 ? flag = false : r.budget;
+  obj.liked = parseInt(r.liked) < 0 ? flag = false : r.liked;
+  obj.photo = r.photo;
+  if(!validDate(r.birth)){
+    res.json(invBirth);
+    return;
+  }
+  obj.birth = r.birth;
+  if(!flag){
+    res.json(validErr);
+    return;
+  }
+  actors.push(obj);
+  res.json(obj);
+})
+
+function validDate(date){
+  let d = date.split('.');
+  if(parseInt(d[0]) > 31)
+    return false;
+  if(parseInt(d[1]) > 12)
+    return false;
+  if(d[2].length > 4 || parseInt(d[2]) > 2017)
+    return false;
+  return true;
+}
+
+app.get('/api/actors/read', (req, res) => {
+  res.send(actors.find(actor => actor.id == req.query.id));
+})
 
 app.get('/api/actors/readall', (req, res) => {
   actors.sort((x, y) => {
@@ -27,7 +69,7 @@ app.get('/api/films/readall', (req, res) => {
 });
 
 app.get('/api/films/read', (req, res) => {
-  res.send(films.find(film => film.id == req.query.id))
+  res.send(films.find(film => film.id == req.query.id));
 });
 
 app.post('/api/films/create', (req, res) => {
