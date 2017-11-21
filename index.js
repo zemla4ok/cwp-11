@@ -12,6 +12,32 @@ const idErr = {code: 400, message: 'Where is id?'}
 const invId = {code: 400, message: 'invalid id'}
 const invBirth = {code: 400, message: 'invalid birth'}
 
+
+
+app.post('/api/actors/update', (req, res) => {
+  let r = req.body;
+  if(!r.id){
+    res.json(idErr);
+    return;
+  }
+  let id = parseInt(r.id);
+  let ind = actors.findIndex(i => i.id == id);
+  if(ind < 0){
+    res.json(invId);
+    return;
+  }
+  if(!validDate(r.birth) && r.birth){
+    res.json(invBirth);
+    return;
+  }
+  r.name ? actors[ind].name = r.name : null;
+  r.birth ? actors[ind].birth = r.birth : null;
+  r.films ? actors[ind].films = r.films : null;
+  r.liked ? actors[ind].liked = r.liked : null;
+  r.photo ? actors[ind].photo = r.photo : null;
+  res.json(actors[ind]);
+})
+
 app.post('/api/actors/create', (req, res) => {
   let r = req.body;
   let obj = {};
