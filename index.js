@@ -7,7 +7,8 @@ let films = require('./top250.json');
 
 const errCreate = {code: 400, message: 'error in creating '}
 const validErr = {code: 400, message: 'validating error '}
-
+const idErr = {code: 400, message: 'Where is id?'}
+const invId = {code: 400, message: 'invalid id'}
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -55,6 +56,56 @@ app.post('/api/films/create', (req, res) => {
   })
   films.push(obj);
   res.json(obj);
+})
+
+app.post('/api/films/update', (req, res) => {
+  req = req.body;
+  if(!req.id){
+    res.json(idErr);
+    return;
+  }
+  let id = parseInt(req.id);
+  let film = films[films.findIndex(i => i.id == id)];
+  if(film === undefined){
+    res.json(invId);
+    return;
+  }
+  req.title ? film.title = req.title : null;
+  req.rating ? film.rating = req.rating : null;
+  req.budget ? film.budget = req.budget : null;
+  req.gross ? film.gross = req.gross : null;
+  req.poster ? film.poster = req.poster : null;
+  req.position ? film.position = req.position : null;
+  req.year ? film.year = req.year : null;
+  films=films.map((element) => {
+    if(element.position >= film.position)
+      element.position++
+    return element;
+  });
+  res.json(film);
+})
+
+app.post('/api/films/delete', (req, res) => {
+  let request = req.body;
+  if(!request.id){
+    res.json(idErr);
+    return;
+  }
+  let id = parseInt(request.id);
+  let filmIndex = films.findIndex(i => i.id === id);
+  console.log(filmIndex);
+  if(filmIndex < 0){
+    res.json(invId);
+    return;
+  }
+  let delPosition = films[filmIndex].position;
+  films.splice(filmIndex, 1);
+  films.map((element) => {
+    if(element.position > delPosition)
+      element.position--;
+    return element;
+  })
+  res.json(films);
 })
 
 function sortFilms(){
