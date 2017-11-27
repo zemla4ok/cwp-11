@@ -6,16 +6,17 @@ const fs = require('fs');
 const routes = require('./routes/index');
 const actors = require('./routes//actors');
 const films = require('./routes/films');
-
+const img = require('./routes/img/images');
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/api/films', films);
 app.use('/api/actors', actors);
+app.use('/api/images', img);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
