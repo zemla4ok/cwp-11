@@ -3,6 +3,7 @@
     "author": "Dmitry",
     "dependencies": {
         "bluebird": "^3.5.1",
-        "express": "^4.16.2"
+        "express": "^4.16.2",
+        "router": "^1.3.2"
     }
 }

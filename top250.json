@@ -7,7 +7,7 @@
         "budget": 20000000,
         "gross": 23875127,
         "poster": "https://st.kp.yandex.net/images/film_iphone/iphone360_382.jpg",
-        "position": 31
+        "position": 1
     },
     {
         "id": 2,
@@ -17,7 +17,7 @@
         "budget": 180000000,
         "gross": 521268237,
         "poster": "https://www.kinopoisk.ru/images/film_big/279102.jpg",
-        "position": 32
+        "position": 2
     },
     {
         "id": 3,
@@ -27,7 +27,7 @@
         "budget": 10000000,
         "gross": 83557872,
         "poster": "https://www.kinopoisk.ru/images/film_big/526.jpg",
-        "position": 33
+        "position": 3
     },
     {
         "id": 4,
@@ -37,7 +37,7 @@
         "budget": 80000000,
         "gross": 294804195,
         "poster": "https://www.kinopoisk.ru/images/film_big/397667.jpg",
-        "position": 34
+        "position": 4
     },
     {
         "id": 5,
@@ -47,7 +47,7 @@
         "budget": 0,
         "gross": 0,
         "poster": "https://www.kinopoisk.ru/images/film_big/44386.jpg",
-        "position": 35
+        "position": 5
     },
     {
         "id": 6,
@@ -57,7 +57,7 @@
         "budget": 140000000,
         "gross": 305413918,
         "poster": "https://www.kinopoisk.ru/images/film_big/4374.jpg",
-        "position": 36
+        "position": 6
     },
     {
         "id": 7,
@@ -67,7 +67,7 @@
         "budget": 185000000,
         "gross": 1004558444,
         "poster": "https://www.kinopoisk.ru/images/film_big/111543.jpg",
-        "position": 37
+        "position": 7
     },
     {
         "id": 8,
@@ -77,7 +77,7 @@
         "budget": 3000000,
         "gross": 108981275,
         "poster": "https://www.kinopoisk.ru/images/film_big/336.jpg",
-        "position": 38
+        "position": 8
     },
     {
         "id": 9,
@@ -87,7 +87,7 @@
         "budget": 0,
         "gross": 52096475,
         "poster": "https://www.kinopoisk.ru/images/film_big/2950.jpg",
-        "position": 39
+        "position": 9
     },
     {
         "id": 10,
@@ -97,6 +97,6 @@
         "budget": 5500000,
         "gross": 83580170,
         "poster": "https://www.kinopoisk.ru/images/film_big/51481.jpg",
-        "position": 40
+        "position": 10
     }
 ]
