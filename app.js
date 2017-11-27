@@ -12,35 +12,12 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api/images', express.static(__dirname+'/public/images/actors/'))
+app.use('/api/images', img);
 app.use('/', routes);
 app.use('/api/films', films);
 app.use('/api/actors', actors);
-app.use('/api/images', img);
 
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-app.use(function (err, req, res, next) {
-    res.status(err.status || 400);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
 
 app.set('port', process.env.PORT || 3000);
 
