@@ -7,6 +7,7 @@ const routes = require('./routes/index');
 const actors = require('./routes//actors');
 const films = require('./routes/films');
 const img = require('./routes/img/images');
+const log = require('./routes/log/log');
 var app = express();
 
 app.use(bodyParser.json());
@@ -17,7 +18,7 @@ app.use('/api/images', img);
 app.use('/', routes);
 app.use('/api/films', films);
 app.use('/api/actors', actors);
-
+app.use('/api/log', log);
 
 app.set('port', process.env.PORT || 3000);
 
