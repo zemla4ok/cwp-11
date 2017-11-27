@@ -9,7 +9,11 @@ const readFilm = require('./routes/films/read');
 const createFilm = require('./routes/films/create');
 const updateFilm = require('./routes/films/update');
 const deleteFilm = require('./routes/films/delete');
-
+const readActors = require('./routes/actors/readAll');
+const readActor = require('./routes/actors/read');
+const createActor = require('./routes/actors/create');
+const updateActor = require('./routes/actors/update');
+const deleteActor = require('./routes/actors/delete');
 
 var app = express();
 
@@ -26,7 +30,11 @@ app.use('/api/films/read', readFilm);
 app.use('/api/films/create', createFilm);
 app.use('/api/films/update', updateFilm);
 app.use('/api/films/delete',  deleteFilm);
-
+app.use('/api/actors/readall', readActors);
+app.use('/api/actors/read', readActor);
+app.use('/api/actors/create', createActor);
+app.use('/api/actors/update', updateActor);
+app.use('/api/actors/delete', deleteActor);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
